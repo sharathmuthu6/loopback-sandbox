@@ -3,6 +3,11 @@
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 
+const {Memory} = require('loopback-datasource-juggler/lib/connectors/memory');
+Memory.prototype.all = function all(model, data, options, callback) {
+  callback(null, [{'name': 'john'}]);
+};
+
 var app = module.exports = loopback();
 
 app.start = function() {
